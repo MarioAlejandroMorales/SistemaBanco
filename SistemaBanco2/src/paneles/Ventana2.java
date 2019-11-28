@@ -204,6 +204,7 @@ public class Ventana2 extends JFrame {
 		JMenuItem mntmMostrar_1 = new JMenuItem("Mostrar");
 		mntmMostrar_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				MostrarTransferencias mostrarTransferencias = new MostrarTransferencias() {
 					//Con esto cuando llamemos a dispose de vNueva abrimos la principal
 			        @Override

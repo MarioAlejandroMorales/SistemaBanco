@@ -47,13 +47,7 @@ public class MostrarTransferencias extends JFrame {
 		table.setBounds(384, 87, 486, 199);
 		contentPane.add(table);
 		table.setModel(new DefaultTableModel(
-			new Object[][] {
-				{"1", "589548", "", "100", "2"},
-				{"2", "2", "", "100", "589548"},
-				{"3", "206003656", "", "100000", "210617855"},
-				{"4", "210617855", "", "1000", "258522587"},
-				{"5", "289017855", "", "700", "987654322"},
-			},
+			a,
 			new String[] {
 				"id", "Cuenta destino", "Razon", "Monto", "Cuenta origen"
 			}

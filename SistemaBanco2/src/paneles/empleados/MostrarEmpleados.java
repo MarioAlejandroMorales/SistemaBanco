@@ -3,17 +3,20 @@ package paneles.empleados;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JTable;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
+import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
 
 import clases.conexionBD;
 
-import javax.swing.JTable;
-import javax.swing.JScrollPane;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JButton;
+import paneles.empleados.ModificarEmpleado;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Toolkit;
 
 public class MostrarEmpleados extends JFrame {
 
@@ -22,6 +25,7 @@ public class MostrarEmpleados extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	
 	private JTable table;
 
 	private conexionBD conexionBD = new conexionBD();
@@ -31,8 +35,9 @@ public class MostrarEmpleados extends JFrame {
 	 */
 	
 	public MostrarEmpleados() {
-		setTitle("Mostrar Empleados");
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setIconImage(Toolkit.getDefaultToolkit().getImage(MostrarEmpleados.class.getResource("/imagenes/LogoIcon.png")));
+		setTitle("Systemoney(Mostrar Empleados)");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1500, 500);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -71,13 +76,25 @@ public class MostrarEmpleados extends JFrame {
 		contentPane.add(TextFieldCodigo);
 		TextFieldCodigo.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Atras");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnBuscar = new JButton("Modificar");
+		btnBuscar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String arra[]= new String [15];
+				arra = conexionBD.consultarCodigo(TextFieldCodigo.getText());
+				ModificarEmpleado modificarEmpleado = new ModificarEmpleado(arra);
+				modificarEmpleado.setVisible(true);
+			}
+		});
+		btnBuscar.setBounds(1200, 115, 97, 25);
+		contentPane.add(btnBuscar);
+		
+		JButton btnAtras = new JButton("Atras");
+		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
 			}
 		});
-		btnNewButton.setBounds(1200, 115, 97, 25);
-		contentPane.add(btnNewButton);
+		btnAtras.setBounds(1200, 365, 97, 25);
+		contentPane.add(btnAtras);
 	}
 }

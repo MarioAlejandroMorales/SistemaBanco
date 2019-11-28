@@ -85,27 +85,43 @@ public class conexionBD {
 		return "";
 	}
 	
-	public String consultarCodigo(String user, String pass) {
+	public String[] consultarCodigo(String user) {
 		conectDatabase();
-		String sql = "SELECT * from empleado WHERE codigo='"+user+"' AND nip="+pass+"";
+		String sql = "SELECT * from empleado WHERE codigo='"+user+"'";
 		Statement stmt;
 		//System.out.println(sql);
-		String cuenta="";
+		String arra[]= new String [15];
 		try {
 			stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 
 			//System.out.println("The records are :"+rs);
-			if(rs.next())
-				cuenta=rs.getString("codigo");
-			if(!cuenta.equals("")) {
-				return cuenta;
+			if(rs.next()) {
+				arra[0]=rs.getString("nombre");
+				arra[1]=rs.getString("apellido");
+				arra[2]=rs.getString("telefono");
+				arra[3]=rs.getString("domicilio");
+				arra[4]=rs.getString("fecha_nac");
+				arra[5]=rs.getString("nss");
+				arra[6]=rs.getString("correo");
+				arra[7]=rs.getString("sexo");
+				arra[8]=rs.getString("sueldo");
+				arra[9]=rs.getString("horario");
+				arra[10]=rs.getString("hora_entrada");
+				arra[11]=rs.getString("hora_salida");
+				arra[12]=rs.getString("codigo");
+				arra[13]=rs.getString("nip");
+				arra[14]=rs.getString("usuario");
+				con.close();
+			}
+			if(!arra[0].equals("")) {
+				return arra;
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "";
+		return arra;
 	}
 	
 	public Object[][] consultarEmpleados() {
@@ -153,5 +169,22 @@ public class conexionBD {
 		}
 		return null;
 	}
-	
+
+	public void modificarEmpleado (String nombre, String apellido, String telefono, String domicilio, String fecha_nac, String nss, String correo, String sexo, 
+			String sueldo,String horario, String h_entrada, String h_salida, String codigo) throws SQLException, IOException {
+
+		conectDatabase();
+		String sql="UPDATE empleado SET nombre='"+nombre+"', apellido='"+apellido+"', telefono="+telefono+", domicilio='"+domicilio+"',fecha_nac='"+fecha_nac+"',nss="+nss
+				+",correo='"+correo+"', sexo='"+sexo+"', sueldo="+sueldo+",horario='"+horario+"',hora_entrada='"+h_entrada+"', hora_salida='"+h_salida+"' WHERE codigo='"+codigo+"'";
+		PreparedStatement ps=con.prepareStatement(sql);
+		System.out.println(ps);
+
+		@SuppressWarnings("unused")
+		int i=ps.executeUpdate();
+		//System.out.println(i+" records added");
+
+		con.close();
+	}
 }
+
+	

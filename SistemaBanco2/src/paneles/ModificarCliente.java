@@ -5,7 +5,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import clases.conexionBD;
+import clases.conexionClientes;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -18,6 +18,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
+import java.awt.Toolkit;
 
 @SuppressWarnings("serial")
 public class ModificarCliente extends JFrame {
@@ -26,7 +27,7 @@ public class ModificarCliente extends JFrame {
     private JTextField textFieldNombre;
     private JTextField textFieldCurp;
     private JTextField textFieldTelefono;
-    private conexionBD conexionBD = new conexionBD();
+    private conexionClientes conexionBD = new conexionClientes();
     private JLabel lblTelefono;
     private JTextField textFieldDomicilio;
     private JLabel lblDomicilio;
@@ -40,6 +41,7 @@ public class ModificarCliente extends JFrame {
      * Create the frame.
      */
     public ModificarCliente() {
+    	setIconImage(Toolkit.getDefaultToolkit().getImage(ModificarCliente.class.getResource("/imagenes/LogoIcon.png")));
         setTitle("Systemoney (Altas Clientes)");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(0, 0, 549, 473);
@@ -141,7 +143,7 @@ public class ModificarCliente extends JFrame {
                 }
                 try {
                     if (conexionBD.modificarCliente(nombre, fecha_nac, domicilio, telefono, curp, correo, sexo)) {
-                        JOptionPane.showMessageDialog(null, "ModificaciÃ³n exitosa");
+                        JOptionPane.showMessageDialog(null, "Modificación exitosa");
                         textFieldNombre.setText("");
                         textFieldTelefono.setText("");
                         textFieldDomicilio.setText("");

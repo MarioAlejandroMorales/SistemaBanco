@@ -1,3 +1,12 @@
+/*Equipo 4
+ * Casallas Mahecha Julian David
+ * Jaramillo Reyes Ana Karen
+ * Morales Guerrero Mario Alejandro
+ * Rodriguez Mejia Roberto
+ * I5891
+ * D04
+ * 2019B
+ */
 import paneles.Ventana2;
 
 import java.awt.Dimension;

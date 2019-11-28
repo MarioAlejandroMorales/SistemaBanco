@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -97,7 +98,13 @@ public class EfectuarTransferencia extends JFrame {
 				conexionTransfe conexionTransfe = new conexionTransfe();
 				boolean aceptada=false;
 				try {
-					aceptada=conexionTransfe.efectuarTransferencia(textFieldOrigen.getText(), textFieldDestino.getText(), Integer.valueOf(textFieldMonto.getText(),10), textFieldRazon.getText());
+					if(!textFieldOrigen.getText().equals(textFieldDestino.getText())) {
+						aceptada=conexionTransfe.efectuarTransferencia(textFieldOrigen.getText(), textFieldDestino.getText(), Integer.valueOf(textFieldMonto.getText(),10), textFieldRazon.getText());
+						dispose();
+					}
+					if(!aceptada) {
+						JOptionPane.showMessageDialog(null, "No se ha podido realizar la transferencia.");
+					}
 				} catch (NumberFormatException | SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

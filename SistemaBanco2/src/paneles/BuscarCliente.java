@@ -18,6 +18,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
+import java.awt.Toolkit;
 
 @SuppressWarnings("serial")
 public class BuscarCliente extends JFrame {
@@ -34,8 +35,9 @@ public class BuscarCliente extends JFrame {
      * Create the frame.
      */
     public BuscarCliente() {
+    	setIconImage(Toolkit.getDefaultToolkit().getImage(BuscarCliente.class.getResource("/imagenes/LogoIcon.png")));
         setTitle("Systemoney (Altas Clientes)");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setBounds(0, 0, 469, 473);
 
         contentPane = new JPanel();
