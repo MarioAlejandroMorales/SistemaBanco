@@ -57,7 +57,7 @@ public class Principal {
 		Ventana2 ventana2 = new Ventana2();
 		
 		frmInicioSesion = new JFrame();
-		frmInicioSesion.setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\Biblioteca\\Documentos\\Java\\SistemaBanco2\\src\\imagenes\\LogoLogin.png"));
+		frmInicioSesion.setIconImage(Toolkit.getDefaultToolkit().getImage(Principal.class.getResource("/imagenes/LogoIcon.png")));
 		frmInicioSesion.setTitle("Inicio Sesion");
 		frmInicioSesion.setBounds(screenSize.width/2-240, screenSize.height/2-175, 320, 175);
 		frmInicioSesion.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -96,6 +96,8 @@ public class Principal {
 				if(conexionBD.consultarLogin(usuario, pass).equals("")) {
 					JOptionPane.showMessageDialog(frmInicioSesion, "Usuario o contraseña invalido.");
 				}else {
+					textFieldUsuario.setText("");
+					passwordFieldPass.setText("");
 					frmInicioSesion.dispose();
 					ventana2.setVisible(true);
 				}

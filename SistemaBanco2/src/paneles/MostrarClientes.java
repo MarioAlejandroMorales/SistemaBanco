@@ -5,7 +5,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-import clases.conexionBD;
+import clases.conexionClientes;
 
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
@@ -15,7 +15,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class MostrarEmpleados extends JFrame {
+public class MostrarClientes extends JFrame {
 
 	/**
 	 * 
@@ -24,22 +24,22 @@ public class MostrarEmpleados extends JFrame {
 	private JPanel contentPane;
 	private JTable table;
 
-	private conexionBD conexionBD = new conexionBD();
-	private JTextField TextFieldCodigo;
+	private conexionClientes conexionClientes = new conexionClientes();
+	private JButton btnRegresar;
 	/**
 	 * Create the frame.
 	 */
 	
-	public MostrarEmpleados() {
-		setTitle("Mostrar Empleados");
+	public MostrarClientes() {
+		setTitle("Mostrar Clientes");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1500, 500);
+		setBounds(100, 100, 1157, 500);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		Object a[][] = conexionBD.consultarEmpleados();
+		Object a[][] = conexionClientes.consultarClientes();
 		
 		table = new JTable();
 		table.setBounds(384, 87, 486, 199);
@@ -48,7 +48,7 @@ public class MostrarEmpleados extends JFrame {
 			
 			a,
 			new String [] {
-					"Nombre", "Apellido", "Telefono", "Domicilio", "Fecha_nacimiento", "NSS", "Correo", "Sexo", "Sueldo", "Horario", "Hora_entrada", "Hora_salida", "Codigo",
+					"Nombre", "Sexo", "Fecha_nacimiento", "Domicilio", "Telefono", "Correo", "CURP"
 			}
 			
 			
@@ -58,26 +58,17 @@ public class MostrarEmpleados extends JFrame {
 		panel.setBounds(12, 60, 1128, 334);
 		contentPane.add(panel);
 		
-		JLabel lblEmpleados = new JLabel("Empleados");
-		lblEmpleados.setBounds(12, 13, 85, 19);
-		contentPane.add(lblEmpleados);
+		JLabel lblCliente = new JLabel("Clientes");
+		lblCliente.setBounds(12, 13, 85, 19);
+		contentPane.add(lblCliente);
 		
-		JLabel lblNewLabel = new JLabel("Codigo:");
-		lblNewLabel.setBounds(1200, 79, 85, 19);
-		contentPane.add(lblNewLabel);
-		
-		TextFieldCodigo = new JTextField();
-		TextFieldCodigo.setBounds(1285, 77, 116, 22);
-		contentPane.add(TextFieldCodigo);
-		TextFieldCodigo.setColumns(10);
-		
-		JButton btnNewButton = new JButton("Atras");
-		btnNewButton.addActionListener(new ActionListener() {
+		btnRegresar = new JButton("Regresar");
+		btnRegresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
 			}
 		});
-		btnNewButton.setBounds(1200, 115, 97, 25);
-		contentPane.add(btnNewButton);
+		btnRegresar.setBounds(1043, 425, 97, 25);
+		contentPane.add(btnRegresar);
 	}
 }

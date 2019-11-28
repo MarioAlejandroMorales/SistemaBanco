@@ -1,4 +1,4 @@
-package paneles;
+package paneles.empleados;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -20,7 +20,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JRadioButton;
 
 @SuppressWarnings("serial")
-public class Altas extends JFrame {
+public class AltasEmpleados extends JFrame {
 	
 	private JPanel contentPane;
 	private JTextField textFieldNombre;
@@ -52,9 +52,9 @@ public class Altas extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Altas() {
+	public AltasEmpleados() {
 		setTitle("Systemoney (Altas Empleados)");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(0,0,599,650);
 		
 		contentPane = new JPanel();

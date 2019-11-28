@@ -8,7 +8,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JMenu;
@@ -39,12 +38,9 @@ public class Mostrar extends JFrame {
 		ImageIcon icoPeli = new ImageIcon("D:\\Biblioteca\\Documentos\\Java\\Cine\\src\\imagenes\\Polimex.png");
 		Image imgPeli = icoPeli.getImage(); //convertimos icon en una imagen
 		Image otraimg = imgPeli.getScaledInstance(202,227,java.awt.Image.SCALE_SMOOTH);
+		@SuppressWarnings("unused")
 		ImageIcon otroico = new ImageIcon(otraimg);
 		contentPane.setLayout(null);
-		
-		JLabel lblLogo = new JLabel(otroico);
-		lblLogo.setBounds(10, 39, 287, 277);
-		contentPane.add(lblLogo);
 		
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBounds(0, 0, 206, 26);
@@ -58,15 +54,10 @@ public class Mostrar extends JFrame {
 		
 		JMenuItem mntmMostrar = new JMenuItem("Mostrar");
 		mnEmpleados.add(mntmMostrar);
-
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBounds(122, 143, 56, 16);
-		contentPane.add(lblNewLabel);
 		
 		JMenuItem mntmCartelera = new JMenuItem("Cartelera");
 		mntmCartelera.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				lblNewLabel.setText("hola");
 			}
 		});
 		menuBar.add(mntmCartelera);
